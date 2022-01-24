@@ -314,3 +314,6 @@ pr.diff
 
 # venv files
 pytorch/*
+
+# Tensorboard logs
+tensorboard_logs/*

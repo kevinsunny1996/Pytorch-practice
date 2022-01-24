@@ -36,4 +36,22 @@ if __name__ == '__main__':
         inst: torch.nn.Module
             The layer that we want to attach the hook to
         
+        inp: the tuple of torch.Tensor
+            The input to 'forward' method
+
+        out: torch.Tensor
+            The output of the 'forward' method
+
         """
+
+        print('Here')
+
+        writer.add_histogram(repr(inst), out)
+
+    handle_1 = net.fc1.register_forward_hook(activation_hook)
+    net.fc2.register_forward_hook(activation_hook)
+    net.fc3.register_forward_hook(activation_hook)
+
+    y = net(x)
+    handle_1.remove()
+    y = net(x)
